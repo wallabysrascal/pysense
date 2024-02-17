@@ -2,8 +2,6 @@ from sense_hat import SenseHat
 from time import sleep
 import random
 import threading
-# somehow asyncio is not behaving as expected
-# import asyncio
 
 sense = SenseHat()
 white = [255,255,255]
@@ -45,11 +43,6 @@ def y_pixel(x):
         sleep(s)
         sense.set_pixel(x,y,black)
         y = (y+1) % 8   
-
-# async def main():
-#     await asyncio.gather(x_pixel(1),y_pixel(3))
-# asyncio.run(x_pixel(1))
-# asyncio.run(y_pixel(3))
 
 sense.clear()
 random.seed()
