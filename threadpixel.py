@@ -57,6 +57,7 @@ random.seed()
 t = []
 t.append(threading.Thread(target=x_pixel,args=[2]))
 t.append(threading.Thread(target=x_pixel,args=[5]))
+t.append(threading.Thread(target=x_pixel,args=[7]))
 t.append(threading.Thread(target=y_pixel,args=[3]))
 t.append(threading.Thread(target=y_pixel,args=[6]))
 t.append(threading.Thread(target=y_pixel,args=[7]))
