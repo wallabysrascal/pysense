@@ -2,6 +2,8 @@ from sense_hat import SenseHat
 from time import sleep
 import random
 import threading
+# somehow asyncio is not behaving as expected
+# import asyncio
 
 sense = SenseHat()
 white = [255,255,255]
@@ -36,17 +38,23 @@ def y_pixel(x):
     global count
     while(count < boredom):
         count += 1
-        if y == 0:
-            c = random.randrange(len(colour))   # random colour from table
-            s = 0.05 + random.random()/10       # random speed (maybe set limit?)
+        if y == 0:                              # we're starting a line
+            c = random.randrange(len(colour))   # pick random colour from table
+            s = 0.05 + random.random()/10       # set random sleep time = 1/speed
         sense.set_pixel(x,y,colour[c])
         sleep(s)
         sense.set_pixel(x,y,black)
         y = (y+1) % 8   
 
+# async def main():
+#     await asyncio.gather(x_pixel(1),y_pixel(3))
+# asyncio.run(x_pixel(1))
+# asyncio.run(y_pixel(3))
+
 sense.clear()
 random.seed()
 # let's see how the fulll sensehat looks like with 2x8 threads
+# note: are we never setting pixel(7,7)?
 t = []
 for i in range(0, 7):
     t.append(threading.Thread(target=x_pixel,args=[i]))
