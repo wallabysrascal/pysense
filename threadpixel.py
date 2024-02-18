@@ -49,7 +49,10 @@ def y_pixel(x):
 
 sense.clear()
 random.seed()
+
 t = []
+
+# we noticed that range(a,b) runs from a to b-1
 for i in range(0, 8):
     t.append(threading.Thread(target=x_pixel,args=[i]))
     t.append(threading.Thread(target=y_pixel,args=[i]))
