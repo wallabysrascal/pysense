@@ -4,7 +4,7 @@ import numpy as np
 
 # open png file and convert into array (we have four values per pixel)
 img = np.array(Image.open("./stinkbug.png"))
-print(repr(img))
+# print(repr(img))
 """
 array([[[104, 104, 104, 255],
         [104, 104, 104, 255],
@@ -14,9 +14,11 @@ array([[[104, 104, 104, 255],
 """
 
 # manipulate array to modify image; wtf happens here with "array slicing"?
+# froom left to right: remove bracket 2x leaves list of tuples (r,g,b,l)
+# and we 
 # https://numpy.org/doc/stable/user/quickstart.html#indexing-slicing-and-iterating
 lum_img = img[:,:,0]
-print(repr(lum_img))
+# print(repr(lum_img))
 
 # draw array; imshow only() renders but does not display ("show") the image
 # imgplot = plt.imshow(img)  # this the orignial map with four bytes per pxel 
